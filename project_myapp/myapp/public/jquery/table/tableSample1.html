@@ -1,0 +1,312 @@
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple KnockoutJS Paging With DataTables.net</title>
+ 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.0.0-dist/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.0.0-dist/dist/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.0.0-dist/dist/css/dataTables.responsive.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  	<!-- Include ALL THE SCRIPTS -->
+    <!-- jQuery http://jquery.com -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/jquery-1.11.1.min.js"></script>
+ 
+    <!-- Bootstrap http://getbootstrap.com -->
+  	<!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+ 
+    <!-- KnockoutJS http://knockoutjs.com/ -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/knockout-3.2.0.min.js"></script>
+	
+    <!-- KnockoutJS Mapping http://knockoutjs.com/documentation/plugins-mapping.html -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/knockout.mapping.2.4.1.min.js"></script>
+ 
+    <!-- jQuery DataTables http://datatables.net -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/jquery.dataTables.1.10.2.js"></script>
+ 
+    <!-- Bootstrap DataTables http://www.datatables.net/manual/styling/bootstrap -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/dataTables.bootstrap.js"></script>
+ 
+    <!-- Responsive DataTables http://www.datatables.net/extensions/responsive/ -->
+    <script src="/bootstrap-3.0.0-dist/dist/js/dataTables.responsive.js"></script>
+  
+<script  type="text/javascript">
+function getIp(data){
+	//console.log(data);
+	//alert("id : " + data);
+	document.getElementById('blockIp').value = data;
+	$("#blockListModal").modal('show');
+}
+
+$(function(){
+	$("#insertIp").click(function(){
+		$("#insertBlockIpModal").modal('show'); 
+	});
+	
+	$("#modiIp").click(function(){
+		if(confirm("수정 하시겠습니까 ?") == true){
+			$("#blockIp").attr('disabled',false);
+		}else{
+			return;
+		}
+	});
+ });
+$(function(){
+	 
+	 $("#delIp").click(function(){
+			
+		 if(confirm("삭제 하시겠습니까 ?") == true){
+				var ipValue = $("#blockIp").val();
+				$.ajax({
+					url : '/admin/deleteBlockIp.do'
+					,dataType : 'text'
+					,data: {ip_address  : ipValue}
+					,type: "POST",
+					success : function(data)  {
+						if(data == 'Y'){
+							alert('정상적으로 처리 되었습니다.');
+							location.href ='/admin/blockListManage.do';
+						}else if(data =='N'){
+							alert('Block IP 삭제에 실패 하였습니다.');
+						}else{
+							
+						}
+					},
+					error : function(request) {
+						alert("'Block IP 삭제에 실패 하였습니다.");
+					}
+				});
+			
+			}else{
+				return;
+			}
+	});
+	 
+}); 
+
+
+$(function(){
+		$('#modiSaveIp').click(function(){  
+			if($("#blockIp").val()==""){
+				alert("IP 를 입력하세요.");
+				return false;
+			}
+			var ipValue = $("#blockIp").val();
+			$.ajax({
+				url : '/admin/insertBlockIp.do'
+				,dataType : 'text'
+				,data: {ip_address  : ipValue}
+				,type: "POST",
+				success : function(data)  {
+					if(data == 'Y'){
+						alert('정상적으로 처리 되었습니다.');
+						location.href ='/admin/blockListManage.do';
+					}else if(data =='D'){
+						alert('중복된 IP 가 있습니다.');
+					}else{
+						alert('Block IP 추가에  실패 하였습니다.');
+					}
+				},
+				error : function(request) {
+					alert("Block IP 추가에 실패 하였습니다.");
+				}
+			});
+	});
+});
+
+
+
+
+$(function(){
+		$('#saveIp').click(function(){  
+			if($("#insertBlockIp").val()==""){
+				alert("IP 를 입력하세요.");
+				return false;
+			}
+			var ipValue = $("#insertBlockIp").val();
+			alert(ipValue);
+			$.ajax({
+				url : '/admin/insertBlockIp.do'
+				,dataType : 'text'
+				,data: {ip_address  : ipValue}
+				,type: "POST",
+				success : function(data)  {
+				//alert(data);
+					if(data == 'Y'){
+						alert('정상적으로 처리 되었습니다.');
+						location.href ='/admin/blockListManage.do';
+					}else if(data =='D'){
+						alert('중복된 IP 가 있습니다.');
+					}else{
+						alert('Block IP 추가에  실패 하였습니다.');
+					}
+				},
+				error : function(request) {
+					alert("Block IP 추가에 실패 하였습니다.");
+				}
+			});
+	});
+});
+  </script>
+  </head>
+  
+
+  <body>
+    <div class="container">
+    <div>
+		<h2>&nbsp;Block List 관리&nbsp;<button  type="button"  id="insertIp" class="btn btn-default btn-sm" title="IP 추가 하기"><span class="glyphicon glyphicon-edit"></span>&nbsp;Block IP 추가 하기</button>&nbsp;&nbsp;</h2>
+	</div>
+      <!-- the table we apply DataTables magic too, data populated with Knockout Foreach iterating over view model -->
+      <table id="ipAddressTable" class="table table-striped table-bordered">
+        <thead>
+          <tr align="center">
+            <th>IP Address</th>
+            <th>Modity</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- ko foreach: proposals() -->
+          <tr>
+          	<!-- 링크걸기 -->
+            <!--<td><a data-bind="attr: { href: $data.proposalURL }, html: $data.title" target="_blank"></a </td>-->
+            <td><span data-bind="text: $data.ip_address"></span></td>
+            <td align="right"><button  type="button"  name="modiButton" data-bind="attr:{id : $data.ip_address}" onclick=getIp(this.id) class="btn btn-default btn-sm" title="수정" ><span class="glyphicon glyphicon-tag"></span>&nbsp;수정</button>&nbsp;&nbsp;</td>
+            <td>삭제</td>
+            <!-- <td><span data-bind="text: $data.schoolName"></span></td>
+            <td><span data-bind="text: $data.percentFunded"></span></td> -->
+          </tr>
+        <!-- /ko -->
+        </tbody>
+      </table>
+</div>
+	
+	<script>
+	$(function() {
+		// knockout view model
+		function ViewModel(model) {
+		var self = this;
+
+		// knockout mapping JSON data to view model
+		ko.mapping.fromJS(model, {}, self);
+		}
+
+		$.ajax({
+				url : '/admin/blockIpManageView.do'
+				,dataType : 'json',
+				/* ,data: {ip_address  : "TEST"}
+				,type: "POST", */
+				
+				success : function(data)  {
+					// bind the data
+					//alert("data : " +  data);
+					var model = {
+							proposals :  data 
+					};  
+					//console.log(model);
+					ko.applyBindings(new ViewModel(model));
+					
+					// apply DataTables magic
+					$("#ipAddressTable").DataTable( { responsive: true } );
+				},
+				error : function(request) {
+					alert("ERROR");
+				}
+		});
+	});
+</script>
+
+<!--Block List Modal  Start -->
+	<div class="modal fade" id="insertBlockIpModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h5 class="modal-title">Block List 관리</h5>
+				</div>
+				<!-- body -->
+				<div align=center class="modal-body" id=joinArea> 
+						<table border=1 class="table table-bordered">
+									<tr class="dafault">
+										<td>
+											<h5>Block IP</h5>
+												<input class="form-control" name="insertBlockIp" id="insertBlockIp" type="text" value=""/>
+										</td>
+									</tr>
+									<tr class="default">
+										<td>
+											<div align="right">
+												<button type="button" id="saveIp" class="btn btn-default btn-lg btn-sm">저장</button>
+											</div>
+											
+										</td>
+									</tr>
+								</table>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Block List Modal  End -->
+
+
+
+<!--Block List Modal  Start -->
+	<div class="modal fade" id="blockListModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h5 class="modal-title">Block List 관리</h5>
+				</div>
+				<!-- body -->
+				<div align=center class="modal-body" id=joinArea> 
+					<form name="signUpForm" id="signUpForm" action="/user/insertUserView.do" method="get" >
+						<table border=1 class="table table-bordered">
+									<tr class="dafault">
+										<td>
+											<h5>Block IP</h5>
+												<!-- <input class="form-control" name="blockIp" id="blockIp" type="text" value="" readonly="readonly"/> -->
+												<input class="form-control" name="blockIp" id="blockIp" type="text" value=""  disabled/>
+										</td>
+									</tr>
+									<tr class="default">
+										<td>
+											<button type="button" id="modiIp" class="btn btn-info btn-lg btn-sm">수정</button>
+											<button type="button" id="delIp" class="btn btn-info btn-lg btn-sm">삭제</button>
+											<button type="button" id="modiSaveIp" class="btn btn-info btn-lg btn-sm">저장</button>
+										</td>
+									</tr>
+								</table>
+						</form>
+						
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Block List Modal  End -->
+	<script src="../bootstrap-3.0.0-dist/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>AngularJS Plunker</title>
+	<script src="http://code.angularjs.org/1.0.5/angular.min.js"></script>
+	<script src="personController.js"></script>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>The name is {{ lastName | uppercase }}</p>
+		<p>The name is {{ firstName | lowercase }}</p>
+	</div>
+</body>
+</html>

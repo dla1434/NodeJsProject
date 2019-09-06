@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+<meta charset="utf-8" />
+<title>AngularJS Plunker</title>
+<script>document.write('<base href="' + document.location + '" />');</script>
+<link rel="stylesheet" href="style.css" />
+<script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" data-semver="1.0.7"></script>
+<script data-require="d3@3.2.2" data-semver="3.2.2" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
+<script src="app.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+	<svg donut-chart width="400" height="200" data="data"></svg>
+	<svg donut-chart width="200" height="150" data="data"></svg>
+	<svg donut-chart data="data"></svg>
+
+	<button ng-click="pushData()">Push more data!</button>
+</body>
+
+</html>

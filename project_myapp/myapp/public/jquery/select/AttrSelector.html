@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>test</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/resources/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div id="sidebar">
+		<ul id="grand">
+			<li id="first">아들 1</li>
+			<li id="second">딸 1</li>
+			<li id="third"><a href="http://yes24.com">yes24</a></li>
+			<li>손자 손녀
+				<ul id="parent">
+					<li>손자1</li>
+					<li>손녀1</li>
+				</ul>
+			</li>
+		</ul>
+		<ul id="grand2">
+			<li>Test 1</li>
+			<li>Test 2
+				<ul id="parent">
+					<li>Test 3</li>
+					<li>Test 4</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var htmlStr = $("a[href='http://yes24.com']").html();
+		console.log("a[href='http://yes24.com'] -> " + htmlStr )
+	
+		var htmlStr = $("li a[href='http://yes24.com']").html();
+		console.log("li a[href='http://yes24.com'] -> " + htmlStr )
+		
+		var htmlStr = $("li:eq(1)").html();
+		console.log("li:eq(1) -> " + htmlStr )
+		
+		var htmlStr = $("li:eq(2)").html();
+		console.log("li:eq(2) -> " + htmlStr )
+		
+		//$("#sidebar").append( $("li:gt(1)") );
+		
+		//$("#sidebar").append( $("li:lt(1)") );
+		
+		//두 개의 tag append
+		$("#sidebar").append( $("li:first"), $("li:last") );
+		//last가 append 안 됨
+		//$("#sidebar").append( $("li:first") ).append( $("li:last") );
+		//last, first 둘 다 append 되긴 함
+		//$("#sidebar").append( $("li:last") ).append( $("li:first") );
+		
+	</script>
+</body>
+</html>

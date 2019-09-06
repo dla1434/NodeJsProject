@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+
+		<ul>
+			<script>
+				var games = new Object();
+				games['game1'] = 'starCraft';
+				games['game2'] = 'Fifa';
+				console.log("games", games);
+
+				for ( var key in games) {
+					document.write("<li>key : " + key + ", value : "
+							+ games[key] + "</li>");
+
+					//주요 참고
+					//games['key']로 할경우 '때문에 key의 값인 game1이 아닌 key로 인식되서 실패된다.
+					//document.write("key : " + key + ", value : " + games['key'] + "<br />");
+				}
+			</script>
+		</ul>
+	</div>
+</body>
+</html>

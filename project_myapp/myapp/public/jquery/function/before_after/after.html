@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			$('.first').after( $('.second') );
+			console.log('test');
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery - after</h3>
+		<h6>.first와 동일 레벨에서 아래에 .second를 위치시킨다.</h6>
+		<hr>
+		
+		<div class="second">둘째</div>
+		<div class="first">첫째</div>
+		<div class="third">셋째</div>
+	</div>
+</body>
+</html>

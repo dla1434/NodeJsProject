@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+<script>
+	$(function(){
+		$('.datetimepicker').appendDtpicker({'locale':'ko'});
+		
+		$('.datetimepicker').click(function(){
+			console.log('test');
+		});
+		
+		$('#show').click(function(){
+			$('.datepicker').show();
+		});
+		
+		$('#hide').click(function(){
+			$('.datepicker').hide();
+		});
+	});
+	
+</script>
+<input type="text" class='datetimepicker' value="">
+<input type="button" id="show" value="show">
+<input type="button" id="hide" value="hide">

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+
+		<script>
+			my_obj = new obj();
+			my_obj.add('key1', 'value1');
+
+			function obj() {
+				obj = new Object();
+				this.add = function(key, value) {
+					obj[key] = value;
+				}
+				this.obj = obj;
+			}
+
+			//객체 값 출력
+			//결과) Object {u1: "user1", u2: "user2"}
+			console.log(my_obj.obj);
+		</script>
+	</div>
+</body>
+</html>

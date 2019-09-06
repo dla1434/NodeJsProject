@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/resources/jquery/jquery-1.10.0.min.js"></script>
+</head>
+<body>
+	<div id="sidebar">
+		<ul id="grand">
+			<li>Test 1</li>
+			<li>Test 2
+				<ul id="parent">
+					<li>Test 3</li>
+					<li>Test 4</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="sidebar1">
+	</div>
+
+	<script type="text/javascript">
+		var htmlStr = $("div#sidebar ul").html();
+		console.log("div#sidebar ul -> " + htmlStr )
+		
+		$("div:eq(1)").append( $("div#sidebar ul") );
+	</script>
+</body>
+</html>

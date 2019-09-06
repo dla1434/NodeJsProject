@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		function view(){
+			var f=document.form;
+			if(f.type[0].checked==true){
+				document.all.cattery.style.display="none";
+			}
+			else{
+				document.all.cattery.style.display="";
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Div Hidden 속성 테스트 : display</h3>
+		<h6>
+			태그도 안 보이고, div 공간도 없어진다<br>
+			display:none : 숨기<br>
+			display:block(=display="") : 보이기
+		</h6>
+		<hr>
+	
+		<form name="form" method="post">
+			<input type="radio" name="type" value="1" onclick="view()" checked> 숨기 
+			<input type="radio" name="type" value="2" onclick="view()"> 보이기
+			<br><br>
+			
+			<div>내용</div>
+			<div id="cattery" style="display:none;">내용2</div>
+			<div>내용3</div>
+		</form>
+	</div>
+</body>
+</html>

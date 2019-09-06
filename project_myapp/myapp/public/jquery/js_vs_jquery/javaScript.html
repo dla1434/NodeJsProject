@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script type="text/javascript">
+        //함수1
+        //W3C/IE DOM(크롬/IE)에 따라 이벤트 종류가 다르다.
+        //그래서 브라우저에 맞는 이벤트를 등록하기 위한 로직
+        function addEvent(target, eventType, eventHandler, useCapture) {
+            console.log('START addEvent');
+            if (target.addEventListener) { //W3C DOM
+                 console.log('W3C DOM');
+                target.addEventListener(eventType, eventHandler, useCapture ? useCapture : false);  //IE DOM
+            } else if (target.attachEvent) {
+                console.log('IE DOM');
+                var r = target.attachEvent("on" + eventType, eventHandler);
+            }
+        }
+
+        //함수2
+        //태그 클릭 시 처리 함수
+        function clickHandler(event) {
+            console.log('START clickHandler');
+            var nav = document.getElementById('navigation');
+            for (var i = 0; i < nav.childNodes.length; i++) {
+                var child = nav.childNodes[i];
+                //child(태그)가 3(=공백)이면 contine
+                if (child.nodeType == 3)
+                    continue;
+                //태그의 class 속성값을 초기화 
+                //기존 selected는 초기화 시킴
+                child.className = '';
+            }
+
+            //해당 이벤트가 발생된 태그에 class속성에 selected값 넣어줌
+            //css에 의해서 색깔이 변경됨
+            event.target.className = 'selected';
+        }
+
+        //실행
+        addEvent(window, 'load', function(eventObj) {
+            var nav = document.getElementById('navigation');
+            for(var i=0;i < nav.childNodes.length; i++) {
+                var child = nav.childNodes[i];
+                if( child.nodeType == 3)
+                    continue;
+
+                addEvent(child, 'click', clickHandler);
+            }
+        })
+        
+        /*
+            참고) addEvent를 아래와 같이 호출하면 인자 개수가 틀려서 호출이 안 될 거 같지만..javascript에서는 정상적으로 호출된다. 
+        */
+        //        addEvent(window, 'load');
+    </script>
+
+    <style>
+        #navigation li {
+            /* li에 문자열 앞에 특수 기호 표시 여부 */
+            list-style: none;
+            /* 
+                li 정렬방식, 기본은 세로
+                left는 한줄로 표시 후 왼쪽 정렬이다.
+            */
+            float: left;
+            /* li 사이 사이의 간격 */
+            padding: 5px;
+        }
+        
+        #navigation {
+            /* 
+                li 위에 마우스 온 했을때 커서 모양 지정
+                pointer는 손가락 모양
+            */
+            cursor: pointer;
+        }
+        
+        #navigation .selected {
+            background-color: red;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul id="navigation">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+</body>
+
+</html>

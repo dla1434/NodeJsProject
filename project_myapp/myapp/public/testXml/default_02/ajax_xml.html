@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Retrieve data from XML file</h2>
+<div id='id'></div>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script>
+$.ajax({
+    url: 'document.xml', // 읽어올 문서
+    type: 'GET', // 방식
+    dataType: 'xml', // 문서 타입
+    timeout: 1000, // 시간 설정
+    error: function(){ // 로딩 에러시
+        alert('Error loading XML document');
+    },
+    success: function(xml){ // 로딩 성공시
+    	$(xml).find('item').each(function(){  // xml 문서 item 기준으로 분리후 반복
+            var link = $(this).find("link").text();
+            var title = $(this).find("title").text(); 
+            var description = $(this).find("description").text(); 
+            var tag = $(this).find("tag").text(); 
+
+            var view_text = link + title + description + tag ; 
+            $("#id").append(view_text);  // #id 에 view_text 삽입
+        });
+    } 
+});
+</script>
+
+</body>
+</html>

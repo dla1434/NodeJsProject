@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+		
+		<script>
+			function get_members() {
+				return [ 't3', 't1', 't2' ];
+			}
+
+			members = get_members();
+
+			//배열을 알파벳 순으로 정렬한다.
+			//출력 결과 : ["t1", "t2", "t3"]
+			//        members.sort();
+			//        console.log("memebers", members);
+
+			//배열을 역순으로 정렬한다.
+			//출력 결과 : ["t2", "t1", "t3"]
+			members.reverse();
+			console.log("memebers", members);
+		</script>
+	</div>
+</body>
+</html>

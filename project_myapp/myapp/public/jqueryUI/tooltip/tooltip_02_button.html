@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example of Bootstrap 3 Tooltip Methods</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $(".show-tooltip").click(function(){
+		   		$("#myTooltip").tooltip('show');
+		    });
+		    $(".hide-tooltip").click(function(){
+		   		$("#myTooltip").tooltip('hide');
+		    });
+		    $(".toggle-tooltip").click(function(){
+		   		$("#myTooltip").tooltip('toggle');
+		    });
+		    $(".destroy-tooltip").click(function(){
+		   		$("#myTooltip").tooltip('destroy');
+		    });
+		});
+	</script>
+	<style type="text/css">
+		.bs-example{
+	    	margin: 60px;
+	    }
+	</style>
+</head>
+<body>
+<div class="bs-example">
+    <p>
+        <a href="#" data-toggle="tooltip" id="myTooltip" title="This is default title">Tooltip Example</a>
+    </p>
+    <div>
+        <p>Click on the following buttons to control the tooltip manually.</p>
+    	<input type="button" class="btn btn-primary show-tooltip" value="Show">
+        <input type="button" class="btn btn-warning hide-tooltip" value="Hide">
+        <input type="button" class="btn btn-success toggle-tooltip" value="Toogle">
+        <input type="button" class="btn btn-danger destroy-tooltip" value="Destroy">
+    </div>    
+</div>
+</body>
+</html>                                		

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <script src= "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script>
+    var R = new Array(10);
+	function Node(){
+		var K="";
+		var S="";
+		var V="";
+	}
+	function Item_trans(object){
+		var item = object.getElementsByTagName('item');
+		return item[0];
+	}
+	function node_trans(object,name){
+		return object.getElementsByTagName(name)[0];
+	}
+	function get_data(key){
+		$.ajax({
+			type:"GET",
+			url:"document.xml",
+			//url:"http://openapi.naver.com/search",
+			//data : "key="+key+"&query=nexearch&target=rank",
+			dataType : "xml",
+			success:function(object){
+				var item = Item_trans(object);
+				for(var i=0;i<10;i++){
+					R[i] = new Node();
+					R[i].K = node_trans(item,'R'+(i+1)).getElementsByTagName('K')[0].firstChild.nodeValue;
+					R[i].S = node_trans(item,'R'+(i+1)).getElementsByTagName('S')[0].firstChild.nodeValue;
+					R[i].V = node_trans(item,'R'+(i+1)).getElementsByTagName('V')[0].firstChild.nodeValue;
+				}
+				set_design(R);
+            },
+            error: function(xhr,status,error){
+            }
+		});	
+	}
+	function set_design(R){
+		for(var i=0; i<10; i++){
+			$("#search_lank").append("<LI><SPAN id=number class=number>"+(i+1)+"</SPAN><SPAN id=keyword class=keyword>"+R[i].K+"</SPAN><SPAN id=upndn class=upndn>"+R[i].S+"</SPAN><SPAN id=upndn_number class=upndn_number>"+R[i].V+"</SPAN></LI>");
+		}
+	}
+	$(document).ready(function(){
+		get_data("******본인 키를 넣으세요******");
+	});
+  </script>
+ </HEAD>
+ <BODY>
+<div id=search_lank></div>  
+ </BODY>
+</HTML>
