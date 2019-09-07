@@ -57,26 +57,9 @@ app.get('/dynamic/loop/li', function(req, res){
 	res.send(output);
 })
 
-app.get('/template/pug', function(req, res){
+app.get('/templete/pug', function(req, res){
 	res.render('temp');
 });
-
-app.get('/topic', function(req, res){
-	var topics = [
-		'JavaScript is....',
-		'NodeJS is..',
-		'Express is...'
-	];
-
-	var output = `
-		<a href="/topic?id=0">JavaScript</a><br>
-		<a href="/topic?id=1">NodeJS</a><br>
-		<a href="/topic?id=2">Express</a><br><br>
-		${topics[req.query.id]}
-	`
-
-	res.send(output);
-})
 
 app.listen(3000, function(){
 	console.log('Connected 3000 port');
