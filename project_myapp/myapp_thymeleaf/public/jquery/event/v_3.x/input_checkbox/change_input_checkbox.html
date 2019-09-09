@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			$('input:checkbox').change(function() {
+				//input 태그에서 checkbox가 check되어 있는게 있다면 true를 아니면 false를 표시
+				//간단하게 처리하고 싶다면 $('#textbox').val($(this).is(':checked'));로 대체해도 무관하다.
+				var flag = $(this).is(':checked');
+				console.log("input checkbox is checked : ", flag);
+				if( flag ){
+					$('#textbox').val(flag);
+					console.log("checked checkbox value : ", $(this).val() );
+				}
+				else{
+					$('#textbox').val(flag);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery Event - input checkbox change</h3>
+		<h6>
+			change : input + checkbox 형태<br>
+			주의점) val() 메소드로 값을 가져오고 싶다면, input 태그 내에 value로 지정해야 가져올 수 있다.
+		</h6>
+		<hr>
+		
+		<div id="checkboxArea">
+			<input type="checkbox" name="box" value="A" /><label>1번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="B" /><label>2번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="C" /><label>3번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="D" /><label>4번째 checkbox</label><br>
+		</div>
+		
+		<label for="textbox1">체크 박스 여부 : </label>
+		<input type="text" id="textbox" />
+	</div>
+</body>
+</html>

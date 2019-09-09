@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>An object method is a function definition, stored as a property value.</p>
+<p>If you access it without (), it will return the function definition:</p>
+
+<p id="demo"></p>
+
+<script>
+var book = new Object();
+book.title = "sample";
+book.chapter1 = new Object();
+book.chapter1.title = "title01";
+book.chapter1.page = 24;
+book.chapter2 = new Object();
+book.chapter2 = {title: "title02", page: 10};
+book.toString = function() {
+  var message = "Outline: " + book.title + "\n" +
+    "Chapter 1: " + book.chapter1.title + "\n" +
+    "Chapter 2: " + book.chapter2.title + "\n";
+  return message;        
+}
+
+document.getElementById("demo").innerHTML = book.toString();
+</script>
+</body>
+</html>

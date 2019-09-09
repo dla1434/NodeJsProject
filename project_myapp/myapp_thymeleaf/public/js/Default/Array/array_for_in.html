@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+		<script>
+			function get_members(){
+				return ['t1', 't2', 't3']; 
+			}
+			
+			members = get_members();
+			
+			for(var i in members ){
+				document.write( members[i] );
+				document.write("<br />");
+			}
+	</script>
+	</div>
+</body>
+</html>

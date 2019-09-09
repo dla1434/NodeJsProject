@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/js/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="/js/ui.js"></script>
+</head>
+<body>
+	<div id="sidebar">
+		<ul id="grand2">
+			<li>Test 1</li>
+			<li>Test 2
+				<ul id="parent">
+					<li>Test 3</li>
+					<li>Test 4</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		//replaceAll prototype 선언
+		String.prototype.replaceAll = function(org, dest) {
+			return this.split(org).join(dest);
+		}
+	
+		//replaceAll 사용
+		var str = "Hello World";
+		str = str.replaceAll("o","*");
+		alert(str);
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="/js/libs/jquery-2.1.1.min.js"></script>
+
+</head>
+<body>
+	<div class="message" style="padding-left: 0px;">1</div>
+	<div class="message" style="padding-left: 20px;">2</div>
+	<div class="message" style="padding-left: 20px;">3</div>
+	<div class="message" style="padding-left: 40px;">4</div>
+	<div class="message" style="padding-left: 20px;">5</div>
+</body>
+
+<!-- jQuery Form Validation code -->
+<script>
+	$(function() {
+		var elems = new Array();
+		$("div.message").each(function() {
+			console.log($(this).css("paddingLeft"));
+/* 			if (parseInt($(this).css("paddingLeft"), 10) > 20) {
+				elems.push($(this));
+			}
+ */		});
+	});
+</script>
+
+</html>

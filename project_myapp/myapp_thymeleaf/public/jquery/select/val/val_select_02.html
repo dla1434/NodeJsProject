@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/resources/js/jquery-1.11.1.min.js"></script>
+	<style>
+		body {
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<select id="single">
+		<option>Single1</option>
+		<option>Single2</option>
+	</select>
+
+	<select id="multiple" multiple="multiple">
+		<option selected="selected">Multiple1</option>
+		<option>Multiple2</option>
+		<option selected="selected">Multiple3</option>
+	</select>
+	
+	<br/>
+	
+	<input type="checkbox" name="checkboxname" value="check1" /> check1
+	<input type="checkbox" name="checkboxname" value="check2" /> check2
+	<input type="radio" name="r" value="radio1" /> radio1
+	<input type="radio" name="r" value="radio2" /> radio2
+	
+	<script>
+		//if you allocate val value, it will be displyed as default value
+		//$("#single").val("Single1");
+		$("#single").val("Single2");
+		
+		//if you allocate val value, it will be checked as default check
+		//$("#multiple").val(["Multiple2", "Multiple3"]); 
+		$("#multiple").val(["Multiple2", "Multiple3"]); 
+		
+		//if you allocate val value, it will be checked as default check
+		$("input").val(["check1","check2", "radio1" ]);
+	</script>
+</body>
+</html>

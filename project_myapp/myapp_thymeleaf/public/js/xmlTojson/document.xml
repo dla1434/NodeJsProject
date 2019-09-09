@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<item>test</item>
+	<item1>test1</item1>
+	<item2>
+		<i1>test>i1</i1>
+	</item2>
+</xml>

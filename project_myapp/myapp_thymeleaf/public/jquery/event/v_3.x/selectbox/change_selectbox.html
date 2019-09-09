@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			var value = $('select > option:selected').val();
+			console.log('selected selectBox : ', value);
+			
+			$('#selectBox').change(function(){
+				var value = $('select > option:selected').val();
+				console.log('selected selectBox : ', value);
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery - filter + selectBox</h3>
+		<h6>Select Box에서 선택된 항목의 값만 출력하기</h6>
+		<hr>
+
+		<select id="selectBox">
+			<option>Apple</option>
+			<option>Bag</option>
+			<option>Cat</option>
+			<option>Dog</option>
+			<option>Elephant</option>
+		</select>
+	</div>
+</body>
+</html>

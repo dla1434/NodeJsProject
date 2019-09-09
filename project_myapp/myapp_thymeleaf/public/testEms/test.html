@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/js/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="/js/ui.js"></script>
+	<script type="text/javascript" src="/testEms/common.js"></script>
+</head>
+<body>
+
+<aside id="left-panel">
+</aside>
+
+<!-- 
+<input type="button" value="html 태그변경 전" id="htmlbutton1"/>
+<input type="button" value="html 태그변경 후" id="htmlbutton2"/>
+<input type="button" value="html 태그 추가" id="htmlbutton3"/>
+<div id="htmltest" style="border-width: 1px; border-style: solid;">
+	<input id="inputBox" type="text" value="test"/>
+	<br>
+	변경전HTML
+</div>
+
+<br><br>
+<input type="button" value="태그 전 태그를 text로 출력" id="textbutton1"/>
+<input type="button" value="태그 후 태크를 text로 출력" id="textbutton2"/>
+<div id="texttest" style="border-width: 1px; border-style: solid;"></div>
+ -->
+
+<script type="text/javascript">
+	$(function() {
+		var menuRootId = 'navMenu';
+		var appendTo = 'left-panel';
+		navHtml.makeNav(menuRootId, appendTo);
+		
+		var array = ['t1', 't2', 't3', 't4'];
+		//for (var idx = 0; idx < val.length; idx++) {
+		for(var i in array){
+			var ulId = array[i];
+			var menuName = array[i];
+			var appendTo = menuRootId;
+			
+			if( i == 0){
+				var activeFlag = true;
+				navHtml.addLiMenu(ulId, appendTo, menuName, activeFlag);
+			}
+			else{
+				var activeFlag = false;
+				navHtml.addLiMenu(ulId, appendTo, menuName, activeFlag);
+			}
+			
+		}
+		
+	})
+</script>
+</body>
+</html>

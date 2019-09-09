@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>test</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/resources/jquery/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<input type="button" id="listButton" value="리스트출력" />
+<br/>
+<div id="listDiv"></div>
+
+<script type="text/javascript">
+	$(function(){
+		$("#listButton").click(function(){
+			$.ajax({
+				type : 'post',
+				url : './list.html',
+				dataType : 'html',
+				success : function(data) {
+					alert(data);
+					$("#listDiv").html(data);
+				}
+			});
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>testMdl</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+</head>
+<body>
+</body>
+
+<br>
+<br>
+<br>
+
+<!-- Simple MDL Progress Bar -->
+<div id="p1" class="mdl-progress mdl-js-progress"></div>
+
+<script>
+	document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+		this.MaterialProgress.setProgress(10);
+	});
+</script>
+
+<br>
+<br>
+<br>
+
+<!-- MDL Progress Bar with Indeterminate Progress -->
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
+
+<br>
+<br>
+<br>
+
+<!-- MDL Progress Bar with Buffering -->
+<div id="p3" class="mdl-progress mdl-js-progress"></div>
+<script>
+  document.querySelector('#p3').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress(33);
+    this.MaterialProgress.setBuffer(87);
+  });
+</script>
+
+<br>
+<br>
+<br>
+
+
+
+</html>

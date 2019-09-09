@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="APP">
+<head>
+<meta charset="UTF-8">
+<title>ng-table example</title>
+<link rel="stylesheet" type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css
+" />
+<link rel="stylesheet" type="text/css" href="/application/html/js/esvit/ng-table/ng-table.css" />
+
+</head>
+<body ng-controller="ExampleController">
+	<div class="container">
+		<div class="main">
+			<table ng-table="tableParams" class="table">
+				<tr ng-repeat="user in users">
+					<td data-title="'Name'" sortable="name">{{user.name}}</td>
+					<td data-title="'Age'" sortable="age">{{user.age}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
+	<script src="https://cdn.rawgit.com/esvit/ng-table/v1.0.0/dist/ng-table.js"></script>
+	<!-- <script src="/application/html/js/esvit/ng-table/ng-table.js"></script> -->
+	
+	<script>
+		angular.module("APP",["ngTable"]).
+		controller("ExampleController",['$filter','$http','$scope','ngTableParams',function($filter,$http,$scope,ngTableParams){
+			$http.jsonp('http://filltext.com/?rows=25&name={firstName}&age={randomNumberRange|25to55}&callback=JSON_CALLBACK')
+				.success(function(data){
+					$scope.tableParams = new ngTableParams({
+		                page: 1,            // show first page
+		                total: data.length, // length of data
+		                count: 10           // count per page
+	           	 });
+	            
+	 			$scope.$watch('tableParams', function(params) {
+	                var orderedData = params.sorting ? $filter('orderBy')(data, params.orderBy()) : data;
+	 
+	                $scope.users = orderedData.slice((params.page - 1) * params.count, params.page * params.count);
+	            }, true);
+			})
+		}])
+	</script>
+</body>
+</html>

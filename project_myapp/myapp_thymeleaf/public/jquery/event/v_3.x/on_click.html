@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<style>
+		input{
+			display:block;
+		}
+	</style>
+
+	<script>
+		function clickHandler(e) {
+			alert('function 호출');
+		}
+	
+		//$(document).bind('ready', function(){ --> 상위에 $(document).ready(function(){
+		//js에서는 순차적으로 실행이 되므로, 위에 선언 된 clickHandler function을 수행하기 위해서 ready 안에서 실행해야 한다.
+		$(document).ready(function() {
+			$(document).on('click', '#click_event', clickHandler);
+			
+			
+			$(document).on('click', '#click_event_1', function(){
+				alert('function 직접 구현');
+			});
+			
+			$('#click_event_2').click(function(){
+				alert('jquery 기본 function');
+			});
+		})
+	</script>
+
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery Event</h3>
+		<h6>
+			$(document).on 사용하여 이벤트 등록<br>
+		</h6>
+		<hr>
+
+		<input type="button" id="click_event" value="on_click_call_fun">
+		<input type="button" id="click_event_1" value="on_click_fun">
+		<input type="button" id="click_event_2" value="click_fun">
+	</div>
+</body>
+</html>

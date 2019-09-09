@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+
+
+		<p>Finding the largest number.</p>
+		<p id="demo"></p>
+
+		<script>
+			/*
+			    findMax(4,5,6)으로 인자를 넣었지만, findMax()에서는 인자값을 따라 선언 안 해줬다..그래도 호출되고 arguments로 해당 인자값도 가져올 수 있다.
+			    자바에서는 findMax(argu1, argu2, argu3)처럼 선언한 뒤..
+			    var i = argu1;처럼 해야 가져올 수 있지만...javascript는 둘 다 가능하다.
+			 */
+			function findMax() {
+				var i;
+				var max = -Infinity;
+				for (i = 0; i < arguments.length; i++) {
+					console.log("argument : ", arguments[i])
+					if (arguments[i] > max) {
+						max = arguments[i];
+					}
+				}
+				return max;
+			}
+			/*
+			    1) document.getElementById("demo")
+			        태그 id가 "demo"인 태그를 가져와라
+			    2) innerHTML
+			        1번 조건의 태그에 태그/텍스트 내용을 넣어라
+			 */
+			document.getElementById("demo").innerHTML = findMax(4, 5, 6);
+		</script>
+	</div>
+</body>
+
+</html>

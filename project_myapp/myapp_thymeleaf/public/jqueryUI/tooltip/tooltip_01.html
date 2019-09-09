@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example of Bootstrap 3 Tooltip</title>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="/resources/css/bootstrap.min.css">
+	<script src="/resources/jquery/jquery-2.1.1.min.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip({
+		        placement : 'bottom'
+		//         placement : 'top'
+		    });
+		});
+	</script>
+	<style type="text/css">
+		.tooltip {
+	/* 	    display:none; */
+		    background: black;
+		    font-size:15px;
+	/* 	    height:10px; */
+	/* 	    width:80px; */
+	/* 	    padding:10px; */
+	/* 	    color:#fff;  */
+	/* 	    z-index: 1; */
+	/* 	    bottom: 10px; */
+	/* 	    border: 2px solid white; */
+		/* for IE */
+	/* 	  filter:alpha(opacity=80); */
+		  /* CSS3 standard */
+	/* 	  opacity:0.8; */
+		}
+	</style>
+</head>
+<body>
+<div style="position: absolute; left: 30%;" class="bs-example"> 
+    <ul class="list-inline">
+    <br><br><br><br><br><br><br><br><br>
+    
+        <li><a href="#" data-toggle="tooltip" title="Default tooltip">Tooltip</a></li>
+        <li><a href="#" data-toggle="tooltip" title="Another tooltip">Another tooltip</a></li>
+        <li><a href="#" data-toggle="tooltip" title="A much longer tooltip to demonstrate the max-width of the Bootstrp tooltip.">Large tooltip</a></li>
+        <li><a href="#" data-toggle="tooltip" title="The last tip!">Last tooltip</a></li>
+    </ul>
+</div>
+</body>
+</html>

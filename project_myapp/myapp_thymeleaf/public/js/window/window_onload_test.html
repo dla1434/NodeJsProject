@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+	
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>window.onload와 $(document).ready 로드 순서 확인</h3>
+		<h6>콘솔 로그를 확인해보자. 순서를 보면 다음과 같다.<br>
+			ready 함수가 먼저 실행되고 window.onload 부분이 실행되는 것을 확인할 수 있다.<br><br>
+			1) 첫번째 ready()<br>
+			2) 두번째 ready()<br>
+			3) 두번째 window.onload<br>
+			중요) 첫번째 window.onload는 출력되지 않는다. window.onload는 여러개를 수행시킬 수가 없다..큰 단점이다.<br>
+		</h6>
+		<hr>
+		
+		<script type="text/javascript">
+			window.onload  =  function() { console.log("첫번째 window.onload"); };
+			window.onload  =  function() { console.log("두번째 window.onload"); };
+			$(document).ready(function() { console.log("첫번째 ready()"); });
+			$(document).ready(function() { console.log("두번째 ready()"); });
+		</script>
+		
+	</div>
+</body>
+</html>
