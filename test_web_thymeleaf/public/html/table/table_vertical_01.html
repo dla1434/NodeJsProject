@@ -1,0 +1,45 @@
+<style type="text/css">
+td {
+	border-collapse: collapse;
+	border: 1px black solid;
+}
+
+tr:nth-of-type(5) td:nth-of-type(1) {
+	visibility: hidden;
+}
+
+#rotate {
+	-moz-transform: rotate(-90.0deg); /* FF3.5+ */
+	-o-transform: rotate(-90.0deg); /* Opera 10.5 */
+	-webkit-transform: rotate(-90.0deg); /* Saf3.1+, Chrome */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+	/* IE6,IE7 */
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+	/* IE8 */
+}
+</style>
+
+<table cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td id='rotate'>1</td>
+		<td>B</td>
+		<td>C</td>
+		<td>D</td>
+		<td>E</td>
+	</tr>
+	<tr>
+		<td id='rotate'>2</td>
+		<td>G</td>
+		<td>H</td>
+		<td>I</td>
+		<td>J</td>
+	</tr>
+	<tr>
+		<td id='rotate'>3</td>
+		<td>L</td>
+		<td>M</td>
+		<td>N</td>
+		<td>O</td>
+	</tr>
+</table>

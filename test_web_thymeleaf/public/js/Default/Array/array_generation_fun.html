@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3> </h3>
+		<h6> </h6>
+		<hr>
+		<script>
+			function get_members() {
+				return [ 't1', 't2', 't3' ];
+			}
+
+			//함수 return값을 변수에 담는다.
+			//return이 배열이므로, members 변수에는 배열이 됨
+			members = get_members();
+
+			//배열의 뒤에 값을 추가한다.
+			members.push('t4');
+
+			//배열의 앞에 값을 추가한다.
+			members.unshift('t0');
+
+			//concat은 push처럼 해당 배열과 별도의 배열을 사용하므로
+			//concat 수행 결과를 members에 넣어줘야 한다.
+			members = members.concat([ 't5', 't6' ]);
+
+			for (i = 0; i < members.length; i++) {
+				document.write(members[i].toUpperCase());
+				document.write("<br />");
+			}
+		</script>
+	</div>
+</body>
+</html>

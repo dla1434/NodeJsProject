@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+
+		<script>
+			function get_members() {
+				return [ 't1', 't2', 't3' ];
+			}
+
+			members = get_members();
+			console.log("before splice", members);
+
+			//배열 1부터 0개, 즉 t2만 제거시킨다.
+			//제거 시킨 자리 즉 배열 1번째에 'd'값을 추가한다.
+			//        members.splice(1, 0, 'd');
+			//        console.log("after splice", members);
+
+			//배열 1번 부터 한개 삭제 후, 해당 위치부터 'x', 'y'를 추가
+			members.splice(1, 1, 'x', 'y');
+			console.log("after splice", members);
+
+			for (i = 0; i < members.length; i++) {
+				document.write(members[i].toUpperCase());
+				document.write("<br />");
+			}
+		</script>
+	</div>
+</body>
+</html>

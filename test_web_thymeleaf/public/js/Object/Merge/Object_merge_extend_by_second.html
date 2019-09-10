@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  
+<div id="log"></div>
+
+<script>
+var object1 = {
+  apple: 0,
+  banana: {weight: 52, price: 100},
+  cherry: 97
+};
+
+object1 = new Object();
+
+var object2 = {
+  banana: {price: 200},
+  durian: 100
+};
+
+/*
+만약 첫번째 객체에 있는 키와 합쳐질 두번째 객체에 있는 키가 동일할 경우, 첫번째 객체의 값은 유지한다.
+만약 첫번째 객체에 있는 키와 다른 키가 두번째 객체에 있다면 해당 키를 첫번째 객체에 적용한다.
+*/
+
+/* merge object2 into object1, recursively */
+$.extend(true, object1, object2);
+
+console.log('object1', object1);
+console.log('object2', object2);
+
+
+//결과) {"apple":0,"banana":{"weight":52,"price":200},"cherry":97,"durian":100}
+
+var printObj = typeof JSON != "undefined" ? JSON.stringify : function(obj) {
+  var arr = [];
+  $.each(obj, function(key, val) {
+    var next = key + ": ";
+    next += $.isPlainObject(val) ? printObj(val) : val;
+    arr.push( next );
+  });
+  return "{ " +  arr.join(", ") + " }";
+};
+
+$("#log").append( printObj(object1) );
+</script>
+
+</body>
+</html>

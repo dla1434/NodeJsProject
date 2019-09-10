@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/resources/js/jquery-1.11.1.min.js"></script>
+	<style>
+		body {
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<select id="selBox" name="selBox">
+		<option value="1">korea</option>
+		<option value="2">america</option>
+		<option value="3">china</option>
+	</select>
+<script>
+	console.log( $("#selBox option:selected").val() );
+	console.log( $("select[name='selBox']").val() );
+	
+	$("#selBox").change(function() {
+		//get select option's value
+		console.log('$("#selBox option:selected").val()', $("#selBox option:selected").val() );
+		console.log('$("select[name=\'selBox\']").val()',  $("select[name='selBox']").val() );
+		console.log('$(this).val()', $(this).val() );
+		
+		//get select option's text value
+		console.log('$(this).children("option:selected").text()', $(this).children("option:selected").text() );
+		
+		console.log( !$(this).val() );
+		console.log( !$(this).children("option:selected").text() );
+	});
+</script>
+</body>
+</html>

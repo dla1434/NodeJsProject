@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+		
+		<script>
+			var array = [ 't1', 't2', 't3' ];
+
+			//join시 기본 구분자는 ,이다
+			//출력결과) t1,t2,t3
+			ex1 = array.join();
+			console.log('ex1', ex1);
+
+			//join시 구분자를 지정할 수 있다.
+			//출력 결과) t1-t2-t3
+			ex2 = array.join("-");
+			console.log('ex2', ex2);
+		</script>
+	</div>
+</body>
+</html>

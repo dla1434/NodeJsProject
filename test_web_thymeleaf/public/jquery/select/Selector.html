@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>test</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/resources/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div id="sidebar">
+		<ul id="grand">
+			<li id="first">아들 1</li>
+			<li id="second">딸 1</li>
+			<li id="third"><a href="http://yes24.com">yes24</a></li>
+			<li>손자 손녀
+				<ul id="parent">
+					<li>손자1</li>
+					<li>손녀1</li>
+				</ul>
+			</li>
+		</ul>
+		<ul id="grand2">
+			<li>Test 1</li>
+			<li>Test 2
+				<ul id="parent">
+					<li>Test 3</li>
+					<li>Test 4</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var htmlStr = $("ul#grand li").html();
+		console.log("ul#grand li -> " + htmlStr )
+		
+		htmlStr = $("ul > li").html();
+		console.log("ul > li -> " + htmlStr )
+		
+		htmlStr = $("#first + li").html();
+		console.log("#first + li -> " + htmlStr )
+		
+		//id가 grand인 ul을 찾고, 다음 ul의 하위 태그를 호출
+		htmlStr = $("#grand + ul").html();
+		console.log("#grand + ul -> " + htmlStr )
+		
+		//id가 first인 li르 찾고, 하위 모든 li를 선택한다.
+		//참고) html()로 전체 html은 안 보인다. li가 하위태그가 없이 값만 있어서 그런거 같음
+		htmlStr = $("#first ~ li").html();
+		console.log("#first ~ li -> " + htmlStr )
+		$("#sidebar").append($("#first ~ li"));
+	</script>
+</body>
+</html>

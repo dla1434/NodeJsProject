@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    
+    <script src="jquery-3.1.1.min.js"></script>
+    
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+    <input type="button" value="execute" id="execute_btn"/> 
+    <script>
+        //예제1) jquery로 li의 텍스트 내용 수정
+//        $('#list li').text('coding everybody');
+        
+        //예제2) jquery로 버튼 클릭 시 텍스트 내용 수정
+        $('#execute_btn').click(function(){
+           $('#list li').text('coding everybody');     
+        })
+    </script>
+</body>
+</html>

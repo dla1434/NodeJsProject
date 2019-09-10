@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="utf-8" http-equiv="encoding">
+<title>Modal Test</title>
+
+<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+<link rel="stylesheet" type="text/css" media="screen" href="/resources/modal/css/smartadmin-production-plugins.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/resources/modal/css/smartadmin-production.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/resources/modal/css/smartadmin-skins.min.css">
+
+<script src="/resources/datatable/js/dataTables.buttons.min.js"></script>
+<script src="/resources/js/jquery-2.1.1.min.js"></script> 
+<script src="/resources/js/bootstrap.min.js"></script>
+
+<!-- IMPORTANT: APP CONFIG -->
+<script src="/resources/js/app.config.js"></script>
+
+<!-- MAIN APP JS FILE -->
+<script src="/resources/js/app.min.js"></script>
+
+<script>
+if (!window.jQuery) {
+	document.write('<script src="/resources/js/jquery-2.1.1.min.js"><\/script>');
+}
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+if (!window.jQuery.ui) {
+	document.write('<script src="/resources/js/jquery-ui-1.10.3.min.js"><\/script>');
+}
+</script>
+<style>
+.modal-dialog-common { /* Edited classname 10/03/2014 */
+	margin: 0;
+	position: absolute;
+	top: 30%;
+	left: 40%;
+}
+</style>
+
+</head>
+<body>
+
+<div id="tabs">
+<ul>
+	<li><a href="#simple">Simple</a></li>
+</ul>
+<div id="simple">
+	<h2>Simple</h2>
+	<p>
+		See the <code>org.springframework.samples.mvc.simple</code> package for the @Controller code
+	</p>
+	<ul>
+		<li>
+			<a id="simpleLink" class="textLink" href="<c:url value="/study/simpleTest.do" />">GET /simple</a>
+		</li>
+	</ul>
+</div>
+
+<div class="items-container">
+
+<!-- S: MMSS Proc 추가 Modal -->
+<div id="addProce_dialog">
+		<form id="add_mmss_proc_info" action="" class="smart-form">
+			<fieldset>			
+				<section>
+					<label class="label">MMSS Server Name</label>
+						<label class="input">
+							<input id="add_mmss_server_name" name="add_mmss_server_name" type="text" class="input-xs" disabled>
+						</label>
+				</section>
+				<section>
+					<label class="label">Proc Code</label>
+						<label class="input">
+							<input id="add_mmss_proc_code" name ="add_mmss_proc_code" type="text" class="input-sm">
+						</label>
+				</section>
+				<section>
+					<label class="label">Proc Name</label>
+						<label class="input">
+							<input id="add_mmss_proc_name" name="add_mmss_proc_name" type="text" class="input-sm">
+						</label>
+				</section>
+				<section>
+					<!-- <label class="label">AutoFlag</label> -->
+						<label class="input">AutoFlag
+							<select id="add_mmss_proc_autoflag" name ="add_mmss_proc_autoflag">
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</label>
+				</section>
+			</fieldset>
+		</form>
+</div>
+<!-- E: MMSS Proc 추가 Modal -->
+
+</div>
+
+
+<script type="text/javascript">
+var mmssServerMap = new Map(); 
+
+$(document).ready(function() {
+	$("#addProce_dialog").show();
+});
+	
+
+var pagefunction = function() {
+	addMmssProcInfo('test', '01');
+};
+
+pageSetUp();  //Widget 및 각종 function 셋업
+pagefunction(); //페이지 함수
+
+function addMmssProcInfo (mmssSvrName,mmssSvrId){
+	
+	console.log(mmssSvrName);
+	console.log(mmssSvrId);
+	$('#add_mmss_server_name').val(mmssSvrName);
+	
+	$('#addProce_dialog').dialog({
+		autoOpen : false,
+		width : 600,
+		resizable : false,
+		modal : true,
+		title : "MMSS Process 추가",
+		buttons: {
+			 저장: function () {
+				
+				 $("#add_mmss_proc_info").validate({
+						// Rules for form validation
+						rules : {
+							add_mmss_proc_code : {
+								required : true,
+								minlength : 1,
+								maxlength : 9,
+							},
+							add_mmss_proc_name : {
+								required : true,
+								minlength : 1,
+								maxlength : 32,
+							}
+						},
+						// Do not change code below
+						errorPlacement : function(error, element) {
+							error.insertAfter(element.parent());
+						}
+					});
+			},	
+			 닫기: function () {
+					$("#add_mmss_proc_code").val("");
+					$("#add_mmss_proc_name").val("");
+					$(this).dialog("close"); 
+			} 
+		},
+	});
+	
+	$(".ui-dialog-titlebar-close").hide();
+	$('#addProce_dialog').dialog('open');
+	
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="import" href="/Include/Include_head_title.html">
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3></h3>
+		<h6></h6>
+		<hr>
+
+		<script>
+			var grades = {
+				't1' : 10,
+				't2' : 6,
+				't3' : 80
+			};
+
+			//delete 방법1
+			//delete grades.t1;
+
+			//delete 방법2
+			//[]에 String일 경우 '' 추가
+			//        delete grades['t1'];
+
+			//delete 방법3
+			//[]에 변수로 지정시는 ''없이 변수명만 추가
+			//        var args = "t1";
+			//        delete grades[args];
+
+			//delete 방법4
+			delete (grades.t1);
+
+			console.log(grades)
+		</script>
+	</div>
+</body>
+
+</html>

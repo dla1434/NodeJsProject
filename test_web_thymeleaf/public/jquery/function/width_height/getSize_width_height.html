@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			var width = $('#wid-id-1').width();
+			var height = $('#wid-id-1').height();
+			
+			console.log('width : ', width, 'height : ', height);
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery - Width, Height</h3>
+		<h6>태그의 가로/세로 사이즈 구하기</h6>
+		<hr>
+		
+		<div class="well padding-10" id="wid-id-1">
+			<h5 class="margin-top-0"><i class="fa fa-fire"></i> Data Map</h5>
+			<div class="widget-body">
+				<form>
+					<label><input type="radio" name="mode" value="sumBySize" checked> Size</label>
+					<label><input type="radio" name="mode" value="sumByCount"> Count</label>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

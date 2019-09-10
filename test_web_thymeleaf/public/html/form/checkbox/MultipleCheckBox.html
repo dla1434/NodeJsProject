@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Hello, world!</title>
+		
+		<style>
+			@font-face {
+			    font-family: 'Fira Sans';
+			    src: local('FiraSans-Regular'),
+			    url('/media/fonts/FiraSans-Regular.woff2') format('woff2');
+			}
+			
+			legend {
+			    background-color: #000;
+			    color: #fff;
+			    padding: 3px 6px;
+			}
+			
+			.output {
+			    font: 1rem 'Fira Sans', sans-serif;
+			}
+			
+			input {
+			    margin: .4rem;
+			}
+		</style>
+	</head>
+	<body>
+	
+	<!-- Title -->
+	<h3>Multiple CheckBox 테스트</h3>
+	<h6>Select 여러 개 선택 가능 - "Ctrl + 클릭"</h6>
+	<hr>
+	
+	<!-- Container -->
+	<div class="container">
+		<!-- Multiple CheckBox -->
+		<form action="/html/list/action">
+			<fieldset>
+				<legend>Choose some monster features</legend>
+				<div>
+					<input type="checkbox" id="scales" name="feature" value="scales" checked /> <label for="scales">Scales</label>
+				</div>
+				<div>
+					<input type="checkbox" id="horns" name="feature" value="horns" /> <label for="horns">Horns</label>
+				</div>
+				<div>
+					<input type="checkbox" id="claws" name="feature" value="claws" /> <label for="claws">Claws</label>
+				</div>
+			</fieldset>
+			<input type="submit">
+		</form>
+	</div>
+	
+	</body>
+</html>

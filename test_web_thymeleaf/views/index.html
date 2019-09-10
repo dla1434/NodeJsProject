@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+	<link href="/resources/css/input.css" rel="stylesheet" />
+<style>
+
+</style>
+</head>
+<body>
+	<h1><a href="/list">List Page</a></h1>
+
+	<input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for names.." title="Type in a name"></input>
+	<ul id="ulId">
+		<li thjs:each="dir : ${dirs}">
+			<a thjs:href="'/list/'+${dir}" thjs:text="${dir}"></a>
+		</li>
+	</ul>
+</body>
+
+<script src="/resources/js/inputSearchFunction.js"></script>
+
+</html>

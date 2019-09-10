@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			$('#checkAll').click(function() {
+				//모든 체크박스 선택
+				$('input:checkbox').each(function(){
+					$(this).attr('checked', true);
+				});
+				
+				//name 속성/속성값까지 지정해서 처리하고 싶다면
+				//$('input[name=box]:checkbox')
+				
+			});
+			
+			$('#uncheckAll').click(function(){
+				//모든 체크박스 해제
+				$('input:checkbox').each(function(){
+					$(this).attr('checked', false);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery Event - input checkbox click</h3>
+		<h6>
+			버튼 클릭 시 모든 체크 박스 선택<br>
+			버튼 클릭 시 모든 체크 박스 해제<br>
+		</h6>
+		<hr>
+		
+		<div id="checkboxArea">
+			<input type="checkbox" name="box" value="A" /><label>1번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="B" /><label>2번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="C" /><label>3번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="D" /><label>4번째 checkbox</label><br>
+		</div>
+		
+		<div id="buttonGroups">
+			<input type="button" id="checkAll" value="check all" />
+			<input type="button" id="uncheckAll" value="uncheck all" />
+		</div>
+	</div>
+</body>
+</html>

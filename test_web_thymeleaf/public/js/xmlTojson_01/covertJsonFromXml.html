@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/libs/jquery-ui-1.10.3.min.js"></script>
+	<script type="text/javascript" src="/js/libs/x2js/xml2json.js"></script>
+	<!-- <script type="text/javascript" src="/js/libs/x2js/xml2json.min.js"></script> -->
+</head>
+<body>
+
+
+<script type="text/javascript">
+/* var xml = '';
+xml += '<xml><message>Hello world</message></xml>';
+
+var json = $.xml2json(xml);
+console.log('xml2json', json); */
+
+$.get('document.xml', function(xml){ 
+	var json = $.xml2json(xml);
+	console.log('xml2json', json);
+});
+
+
+</script> 
+
+</body>
+</html>

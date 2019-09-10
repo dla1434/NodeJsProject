@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="import" href="/Include/Include_head_title.html">
+	
+	<script>
+		$(document).ready(function () {
+			$('#getCheckAll').click(function() {
+				$('input:checked').each(function(){
+					var checked = $(this).val();
+					console.log("checked : ", checked);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- Container -->
+	<div class="container">
+		<!-- Title -->
+		<h3>Jquery Event - input checkbox click</h3>
+		<h6>
+			버튼 클릭 시 모든 체크 박스 선택<br>
+			버튼 클릭 시 모든 체크 박스 해제<br>
+		</h6>
+		<hr>
+		
+		<div id="checkboxArea">
+			<input type="checkbox" name="box" value="A" /><label>1번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="B" /><label>2번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="C" /><label>3번째 checkbox</label><br>
+			<input type="checkbox" name="box" value="D" /><label>4번째 checkbox</label><br>
+		</div>
+		
+		<div id="buttonGroups">
+			<input type="button" id="getCheckAll" value="getCheckedList" />
+		</div>
+	</div>
+</body>
+</html>

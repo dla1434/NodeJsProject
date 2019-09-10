@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>AngularJS Plunker</title>
+	<script src="http://code.angularjs.org/1.0.5/angular.min.js"></script>
+	<script src="personController.js"></script>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="costCtrl">
+		<input type="number" ng-model="quantity">
+		<input type="number" ng-model="price">
+		<p>Total = {{ (quantity * price) | currency }}</p>
+		<p>Total = {{ (quantity * price) | currency : "won : " }}</p>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('costCtrl', function($scope) {
+			$scope.quantity = 1;
+			$scope.price = 9.99;
+		});
+	</script>
+</body>
+</html>

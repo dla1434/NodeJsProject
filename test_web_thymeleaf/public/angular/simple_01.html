@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>AngularJS Plunker</title>
+	<script src="http://code.angularjs.org/1.0.5/angular.min.js"></script>
+</head>
+
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="MainCtrl">{{ text }}</div>
+	</div>
+</body>
+
+<script>
+	var myApp = angular.module('myApp', []);
+	myApp.controller('MainCtrl', [ '$scope', function($scope) {
+		$scope.text = 'Hello, Angular fanatic.';
+	} ]);
+</script>
+
+</html>

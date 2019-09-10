@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/js/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="/js/ui.js"></script>
+</head>
+<body>
+
+<input type="button" value="html 태그변경 전" id="htmlbutton1"/>
+<input type="button" value="html 태그변경 후" id="htmlbutton2"/>
+<input type="button" value="html 태그 추가" id="htmlbutton3"/>
+<div id="htmltest" style="border-width: 1px; border-style: solid;">
+	<input id="inputBox" type="text" value="test"/>
+	<br>
+	변경전HTML
+</div>
+
+<br><br>
+<input type="button" value="태그 전 태그를 text로 출력" id="textbutton1"/>
+<input type="button" value="태그 후 태크를 text로 출력" id="textbutton2"/>
+<div id="texttest" style="border-width: 1px; border-style: solid;"></div>
+
+
+<script type="text/javascript">
+	$(function() {
+		var tag1  = '<input type="text" value="test"><br>변경전HTML';
+		$("#htmlbutton1").click(function() {
+			$("#htmltest").html(tag1);
+		});
+		
+		var tag2 = "<input type=\"checkbox\"><br>변경후HTML";
+		//html함수 적용하여 htmltest태그내의 html 변경
+		$("#htmlbutton2").click(function() {
+			$("#htmltest").html(tag2);
+		});
+		
+		var appendTag = "</br><input type=\"checkbox\">변경후HTML";
+		$("#htmlbutton3").click(function() {
+			$("#htmltest").append(appendTag);
+			//$("#htmltest").after(appendTag);
+			//$("#htmltest").before(appendTag);
+		});
+		
+		//text함수를 적용하여 html함수를 사용했던 같은 내용의 문자열을 표출해본다.
+		$("#textbutton1").click(function() {
+			$("#texttest").text(tag1);
+		})
+		
+		//text함수를 적용하여 html함수를 사용했던 같은 내용의 문자열을 표출해본다.
+		$("#textbutton2").click(function() {
+			$("#texttest").text(tag2);
+		})
+		
+		alert( $("#textbutton2").attr("id") )
+		
+		alert( $("#inputBox").attr("value", "test1") )
+	})
+</script>
+</body>
+</html>

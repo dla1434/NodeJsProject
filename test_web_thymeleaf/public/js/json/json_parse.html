@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript" src="/js/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="/js/ui.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var object = {
+				name : 'test',
+				region : 'seoul'
+		};
+		
+		var copy = JSON.parse( JSON.stringify(object) );
+		alert( copy.name + ' : ' + copy.region );
+	</script>
+</body>
+</html>
